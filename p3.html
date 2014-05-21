@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <title>Click events disabled</title>
+        <script type="text/javascript">
+        window.addEventListener('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+        }, true);
+        </script>
+    </head>
+    <body>
+        <h1>Click events disabled</h1>
+        <ul>
+            <li><a href="./index.html">Link to home page</a></li>
+            <li><input type="text"/></li>
+            <li>
+                <select>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+            </li>
+            <li>
+                <form action="">
+                    <input type="checkbox" name="vehicle" value="Bike">I have a bike<br>
+                    <input type="checkbox" name="vehicle" value="Car">I have a car 
+                </form>
+            </li>
+            <li>
+                <form action="">
+                    <input type="radio" name="sex" value="male">Male<br>
+                    <input type="radio" name="sex" value="female">Female
+                </form>
+            </li>
+        </ul>
+    </body>
+</html>

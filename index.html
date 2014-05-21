@@ -3,83 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Ghost click</title>
-        <style>
-            div {
-                width: 260px;
-                height: 110px;
-                padding: 20px;
-                text-align: center;
-                color: white;
-                font-size: 1.5em;
-            }
-        </style>
-        <script type="text/javascript">
-        var beginTime = 0;
-        function clearLogs() {
-            beginTime = (new Date()).getTime();
-            var ul = document.getElementById("logs");
-            ul.innerHTML = '';
-        }
-        function prevents(event) {
-            console.log('preventing');
-            event.preventDefault();
-            log(event);
-        }
-        function log(event) {
-            var ul = document.getElementById("logs");
-            var li = document.createElement("li");
-            var positions = getPositions(event)[0];
-            li.textContent = ((new Date()).getTime() - beginTime) + 'ms ' + event.type + ' (' + positions.x + ', ' + positions.y + ')';
-            ul.appendChild(li);
-        }
-        function getPositions (event) {
-            var result = [];
-            if (event.touches && event.touches[0] || event.changedTouches && event.changedTouches[0]) {
-                for (var i = 0; i < event.touches.length; i++) {
-                    result.push({
-                        x : (event.touches[i].pageX) ? event.touches[i].pageX : event.touches[i].clientX,
-                        y : (event.touches[i].pageY) ? event.touches[i].pageY : event.touches[i].clientY
-                    });
-                }
-                if (event.type == "touchend" || event.type == "MSPointerUp") {
-                    for (var i = 0; i < event.changedTouches.length; i++) {
-                        result.push({
-                            x : (event.changedTouches[i].pageX)
-                                    ? event.changedTouches[i].pageX
-                                    : event.changedTouches[i].clientX,
-                            y : (event.changedTouches[i].pageY)
-                                    ? event.changedTouches[i].pageY
-                                    : event.changedTouches[i].clientY
-                        });
-                    }
-                }
-            } else {
-                result.push({
-                    x : (event.pageX) ? event.pageX : event.clientX,
-                    y : (event.pageY) ? event.pageY : event.clientY
-                });
-            }
-            return result;
-        }
-        </script>
+        <title>Ghost click study</title>        
     </head>
     <body>
-        <h1>Ghost click validation</h1>
-        <div ontouchstart="clearLogs();log(event)" onMSPointerDown="clearLogs();log(event)" ontouchend="log(event)" onMSPointerUp="log(event)" onclick="prevents(event)" style="background:#1abc9c">
-            Ghost click activated
-        </div>
-        <div ontouchstart="clearLogs();prevents(event)" onMSPointerDown="clearLogs();prevents(event)" ontouchend="log(event)" onMSPointerUp="log(event)" onclick="log(event)" style="background:#8e44ad">
-            preventDefault on touchstart
-        </div>
-        <div ontouchstart="clearLogs();log(event)" onMSPointerDown="clearLogs();log(event)" ontouchend="prevents(event)" onMSPointerUp="prevents(event)" onclick="log(event)" style="background:#d35400">
-            preventDefault on touchend
-        </div>
-        <h2>Logs</h2>
-        <ul id="logs">
+        <h1>Ghost click study</h1>
+        <ul>
+            <li><a href="./p1.html">Scalable page</a></li>
+            <li><a href="./p2.html">Not scalable page</a></li>
+            <li><a href="./p3.html">Click events disabled</a></li>
         </ul>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed tortor ligula, non malesuada dui. Suspendisse viverra accumsan erat non pretium. Etiam eget molestie orci. In hac habitasse platea dictumst. Donec a eros magna. Sed blandit, mi et pulvinar tincidunt, turpis lacus aliquet arcu, vel suscipit elit sapien id lorem. Phasellus eget urna quis tortor posuere congue. Vivamus accumsan libero non sapien fermentum fringilla. Integer tincidunt aliquet nisl sit amet condimentum. Sed dignissim pharetra aliquet. Aliquam sagittis egestas nulla ut interdum.<br>
-        <br>
-        Integer id turpis velit, nec volutpat nisi. Nam mauris dui, fermentum adipiscing ultricies pharetra, sollicitudin vitae nisi. Nunc eu erat sem, tristique tincidunt velit. Praesent quis magna dolor, ut lobortis lorem. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque luctus tellus nisi. Morbi tincidunt nisi vel ligula congue placerat. In hac habitasse platea dictumst. Donec mi odio, adipiscing eu facilisis sed, tincidunt in dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur erat ante, gravida eu egestas id, adipiscing ut nulla. Pellentesque suscipit est non ante tincidunt imperdiet. Vestibulum vitae tortor non ligula iaculis tincidunt.<br>
     </body>
 </html>
